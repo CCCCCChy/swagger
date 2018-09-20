@@ -1,6 +1,7 @@
 package com.example.demo;
 
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -15,10 +16,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@ConditionalOnProperty(prefix = "swagger",value = {"enable"},havingValue = "true")
 public class Swagger2 {
+
 
     @Bean
     public Docket createRestApi() {
+
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("demo")
                 .genericModelSubstitutes(DeferredResult.class)
@@ -38,7 +42,7 @@ public class Swagger2 {
                 //创建人
                 .contact(new Contact("cuihuaiyu", "http://www.cuihuaiyu.com", "cuihuaiyu@vip.qq.com"))
                 //版本号
-                .version("1.0")
+                .version("1.0.1")
                 //描述
                 .description("API 描述")
                 .build();

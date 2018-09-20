@@ -19,14 +19,14 @@ public class SwaggerDemoController {
 
     private static final Logger logger= LoggerFactory.getLogger(SwaggerDemoController.class);
 
-        @ApiOperation(value = "根据id查询学生信息123", notes = "查询数据库中某个的学生信息456")
+        @ApiOperation(value = "根据id查询学生信息", notes = "查询数据库中某个的学生信息")
         @ApiImplicitParam(name = "id", value = "学生ID", paramType = "path", required = true, dataType = "Integer")
         @GetMapping(value = "/{id}")
         public Student getStudent(@PathVariable int id) {
             logger.info("开始查询某个学生信息");
             Student student = new Student();
             student.setId(id);
-            student.setName("小黑");
+            student.setName("小黑1");
             return student;
         }
 
